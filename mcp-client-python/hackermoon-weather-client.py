@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class HackermoonWeatherClient:
-    def __init__(self, server_script_path="weather.py"):
+    def __init__(self, server_script_path="../weather-server-python/weather.py"):
         """Initialize the client and start the MCP server subprocess."""
         print("🌙 HackerMoon Weather Client Initializing...")
         
