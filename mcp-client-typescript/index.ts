@@ -120,9 +120,17 @@ class MCPClient {
         );
 
         // Continue conversation with tool results
+        const toolContent = Array.isArray(result.content) 
+          ? result.content.map(item => 
+              typeof item === 'object' && item !== null && 'text' in item 
+                ? item.text 
+                : JSON.stringify(item)
+            ).join('\n')
+          : String(result.content);
+        
         messages.push({
           role: "user",
-          content: result.content as string,
+          content: toolContent,
         });
 
         // Get next response from Claude
